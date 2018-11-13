@@ -26,7 +26,7 @@ JSP 지시자, JSP Directive
 - <%@ XXX %>
 - JSP 페이지를 실행하는 컨테이너(톰캣)에게 해당 JSP 페이지를 어떻게 처리할지 알려주는 역할
 a. page 지시자
-b. include 지시자
+b. include 지시자 > 반복되는 부분(조각페이지) > 붙여넣기임. >but 일부코드여야함(body태그내의 내용 제외하고 모두 없애기
 c. taglib 지시자
 
 
@@ -88,22 +88,134 @@ page 지시자
 	i. isErrorPage
 		- 본인이 에러 페이지라고 선언
 	
+
+include 지시자
+- <%@ include file="URL"%>
+- 특정 JSP/HTML 페이지를 현재 JSP 페이지의 일부에 삽입하는 기술
+- HTML의 <iframe>과 유사한 역할
+- 조각 페이지
+- 재사용성(***) + 유지보수(***)
+- ex) 주메뉴, 서브메뉴, 푸터, 로그인박스 등..
+
+
+taglib 지시자
+- JSTL, 커스텀 태그 등을 사용하기 위해서 지정하는 지시자.
+- 나중에 수업
+
+
+-------------------------------------------------지시자-----------------------------------------------
+
+JSP 스크립트 요소
+- JSP 페이지내에서 자바 구문을 지원하는 요소
+a. 선언문
+b. 스크립틀릿
+c. 표현식
+
+스크립틀릿, Scriptlet
+- <% %>
+- 이 영역은 자바 영역이다.(톰캣에게)
+- 비즈니스 코드 작성(업무 구현)
+	데이터 조작/가공
+	JDBC 오라클 접근
+	동적 HTML 제어
+- 사용 빈도 높음	
+- JSP > 서블릿 변환 할때의 service() 메소드의 영역 
+
+
+
+표현식,Expression
+-<%= 값 %>
+- 상수, 변수, 메소드 반환값 등을 HTML 페이지의 원하는 위치에 출력하는 역할
+- 주로 <% %> 내에서 만들어진 값들을 출력하는 용도
+- JSP > 서블릿 변환 할때의 service()내의 out.print(값)의 인자값으로 전달됨.
+
+선언문,Declaraion
+- <$! %>
+- JSP 페이지의 멤버 변수 or 메소드를 선언하는 역할
+- JSP > 서블릿 변환 할때의 (클래스)멤버영역이 됨.
+
+--------------------------------------------스크립트 요소--------------------------------------------
+
+JSP 내장객체, Implicit Object
+- 개발자가 직접 만들지 않아도 미리 예약된 표현을 통해 제공되는 객체들
+- JSP 페이지가 서블릿 클래스로 변환될 때 상위 클래스로부터 상속받은 멤버 변수
+- request, reponse, session, pageContext, out   사용빈도 높음
+- application, config, page, exception			사용빈도 낮음
+
+
+a. request 객체
+	- 클라이언트 -> (모든 행동) -> 서버
+	- javax.servlet.http.HttpServletRequest 클래스
+	
+	1. 요청 파라미터 가져오기
+		- 클라이언트가 서버로 보낸 데이터를 가져오기
+		- ex06_request_form.jsp		: 사용자 데이터 입력(<form>)
+		- ex06_request_process.jsp	: 수신 + 처리 역할
+		
+		- ex07_request_form.jsp
+		- ex07_request_process.jsp
+		
+	2. HTTP 요청 헤더 정보 가져오기
+		- 가끔씩 필요한 정보
+		- ex08_request_header.jsp
+
+	3. 세션 처리
+		- 나중에 
+		
+	4. 쿠키 처리
+		- 나중에
+	
+	5. URL 처리
+		- 나중에
+	
+	6. 인코딩 처리
+		- 나중에
+	
+	7. 데이터 입출력
+		- request 객체 내부에 사용자 데이터를 저장할 수 있는 맵(해시) 형태의 저장공간이 있다.
+		
+b. response 객체
+	- 서버 -> (모든 행동) -> 클라이언트
+	- javax.servlet.http.HttpServletResponse 클래스 의 인스턴스임
+	
+	a. 응답 컨텐츠 작성
+		- 나중에
+		
+	b. 페이지 이동하기 -> 라운드트립(round_trip) : 클라이언트에서 서버로 왔다가는 것.
+		- response.sendRedirect(URL)
+		- 서버측 이동
+		- ex09_response_one.jsp
+		- ex09_response_two.jsp 
+		
+	c. 쿠키 처리
+		- 나중에
+		
+	d. 인코딩 처리
+		- 나중에
+	
+페이지 요청 방식 구분하는 방법(method)
+- 브라우저가 서버에게 페이지를(페이지가 아니던 무엇이든) 요구하면.. 서버는 아래중 한가지 방법으로  HTTP 요청이 발생
+1. POST
+	
+2. GET
+	-ex10_method_one.jsp
+	-ex10_method_two.jsp
 	
 	
 
+c. pageContext 객체
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	- 한 페이지 요청 ~ 응답까지 과정에 관련된 여러가지 행동을 하는 객체
+	- request / response와 유사
+	
+	1. 데이터 입출력
+		- ex11_pagecontext.jsp 
+		
+	2. 페이지 이동
+		- response.senRedirect(URL)
+		- pageContext.forward(URL)
+		- ex12_pagecontext_one.jsp
+		- ex12_pagecontext_two.jsp
+	
+	
 	
