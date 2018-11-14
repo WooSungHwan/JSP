@@ -30,7 +30,6 @@
 				//for (int i = 0; i < 10; i++) {
 				Enumeration<String> e = request.getHeaderNames();
 				
-				
 				while(e.hasMoreElements()){
 					String headerNames=e.nextElement();
 					//System.out.println(headerNames+" : "+request.getHeader(headerNames));

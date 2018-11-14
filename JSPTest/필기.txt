@@ -121,8 +121,6 @@ c. 표현식
 - 사용 빈도 높음	
 - JSP > 서블릿 변환 할때의 service() 메소드의 영역 
 
-
-
 표현식,Expression
 -<%= 값 %>
 - 상수, 변수, 메소드 반환값 등을 HTML 페이지의 원하는 위치에 출력하는 역할
@@ -130,7 +128,7 @@ c. 표현식
 - JSP > 서블릿 변환 할때의 service()내의 out.print(값)의 인자값으로 전달됨.
 
 선언문,Declaraion
-- <$! %>
+- <%! %>
 - JSP 페이지의 멤버 변수 or 메소드를 선언하는 역할
 - JSP > 서블릿 변환 할때의 (클래스)멤버영역이 됨.
 
@@ -216,6 +214,122 @@ c. pageContext 객체
 		- pageContext.forward(URL)
 		- ex12_pagecontext_one.jsp
 		- ex12_pagecontext_two.jsp
+	
+d. out 객체
+	- 응답 페이지 작성하는 객체
+	- ex13_out.jsp
+	
+e. application
+	- 웹 어플리케이션을 운용하는 서버에 관련된 정보를 관리
+	
+	1. 데이터 저장
+		- setAttribute(), getAttribute()
+		
+	2. 서버 환경 정보
+		- ex14_application.jsp
+		- application.getRealPath(".") - 현재 물리정보 (상대경로 -> 절대경로)
+
+f. session
+	- 내장 객체 가장 중요한 객체
+	- 개념(*******)
+	- 사용자의 첫 요청때 서버 메모리에 세션 객체 생성 -> 타이머 동작(20분) -> 재요청(같은 페이지 or 다른 페이지) 타이머 리셋(20분) x 반복 -> 타이머 만료 -> 세션객체 소멸
+	- 현재 사용자의 개인 정보 저장 + 서버입장에서 사용자의 접속 상태 확인(관리)
+	- 접속한 사용자마다 개인의 세션 객체 생성 -> 절대 다른 유저의 세션을 접근 불가능
+	- 휘발성 -> 접속 중에서 유효한 객체
+	- ex15_session.jsp
+	
+	- ex16_session_one.jsp
+	- ex16_session_two.jsp
+	
+
+내장 객체의 데이터 입출력(******)
+	- pageContext, request, session, application
+	- getter : Object getAttribute(String key), 
+	- setter : void setAttribute(String key,Object value)
+	- ***위의 4개의 내장개체는 각각의 생명주기가 다르다.
+	- 생명주기 -> Scope(Servlet/JSP)
+	- pageContext <= request < session <= application
+	- pageConext.forward(URL)은 request와 response 객체를 같이 가져간다는 개념.
+	- 그래서 다음페이지에도 현재 페이지의 request 객체가 살아있다.
+	
+	- ex17_scope_one.jsp
+	- ex17_scope_two.jsp
+	- ex17_scope_three.jsp
+	
+	
+	-request vs pageContext
+	- ex18_scope_full.jsp
+	- ex18_scope_part.jsp
+	
+
+액션 태그, Action Tag
+- 프로그래밍 기능이 있는 태그
+- JSP 페이지에서 자바코딩( <% %> ) -> 스크립틀릿, 표현식 -> 가독성이 떨어짐. -> JSP 페이지는 HTML 기반이니까 프로그래밍 코드도 HTML 형식으로 만들기
+- XML 문법 기법 (=> 문법이 엄격하다.)
+	a. 태그 or 속성 : 대소문자 잘 구분할것.
+	b. <input>(단독태그) X => <input/>
+	
+1. JSP (표준) 액션 태그(standard.jar) - 정석버전
+2. JSTL 액션 태그(jstl.jar) - 확장버전
+3. 사용자 정의 액션 태그 - 내맘대로버전
+
+JSP 표준 액션 태그
+
+1. forward 액션
+	- pageContext.forward(URL); // 순수 자바
+	- <jsp:forward page="URL"> // XML -> 액션 태그
+	- ex19_forward_one.jsp
+	- ex19_forward_two.jsp
+	
+2. include 액션
+	- <%@ include file="URL" %>
+	- <jsp:include page="URL">
+	- ex20_include_full.jsp
+	- ex20_include_part.jsp
+
+자바빈, Java Bean
+- 자바 클래스로 만든 객체
+- JSP에서 자바빈이라는 명칭으로 클래스 객체를 관리하는 기능을 제공
+- 현재 액션 태그들은 스프링 수업에도 유사한 개념이 사용이 된다.(****)
+- ex21_bean.jsp
+
+
+
+3. <jsp:useBean>
+4. <jsp:setProperty>
+5. <jsp:getProperty>
+	
+자바빈을 사용하면 편리한 예
+- ex22_bean_form.jsp
+- ex22_bean_process.jsp
+- Address.java
+	
+
+세션, Session
+- ex26_session.jsp
+- ex26_session_set.jsp
+- ex26_session_del.jsp	
+- ex26_session_reset.jsp
+- ex26_session_interval.jsp
+	
+	
+세션, Session vs 쿠키,Cookie
+- 공통점 
+	1. 고객 정보(접속한 유저)를 저장하는 매체
+	2. 유저끼리 서로 간섭을 못한다.(접근권한 불가능)
+- 차이점
+	1. 쿠키(p205) 
+		- 클라이언트 측 저장( 메모리-> (만료시간) -> HDD )
+		- 문자열 저장용(자료형 존재X, 텍스트 파일)
+		- 만료 시간 지정 가능(장기보관 + 재접속)
+	2. 세션 
+		- 서버측 저장(메모리)(하드저장X)
+		- 모든 타입 저장용(문자열 or 객체 or 기타 등등)
+		- 만료 시간 지정(접속 고객 한해서...)
+	
+	
+	
+	
 	
 	
 	
