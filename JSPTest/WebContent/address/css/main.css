@@ -1,0 +1,38 @@
+/* main.css */
+@import url(//fonts.googleapis.com/earlyaccess/nanumbrushscript.css); .nanumbrushscript * { font-family: 'Nanum Brush Script', cursive; }
+
+@font-face { font-family: 'EBSHMJESaeronRA'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/EBSHMJESaeronRA.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+html,body,p,div,span,table,th,td,ul,ol,dl,li,dt,dd,input,textarea,select,option,fieldset,legend,h1,h2,h3,h4,h5,h6,a{
+	font-family: EBSHMJESaeronRA;
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+#header,#main,#footer{
+	width:800px;
+	margin:0px auto;
+	
+}
+
+#header{
+	
+	
+}
+#header > h1{
+	margin-top:30px;
+	margin-bottom:20px;
+}
+#main{
+	min-height:500px;/* 내용물이 적을떈 500px로 하고 내용물이 넘칠땐 500px 이상으로 늘어나라 */
+	
+}
+
+#footer{
+	text-align:center;
+	border-top:1px solid #A9A9A9;
+	padding-top:15px;
+	padding-bottom:50px;
+}
