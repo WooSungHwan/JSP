@@ -26,7 +26,9 @@
 	<!--  -->
 	<div class="container">
 		
-		<jsp:include page="inc/header.jsp"></jsp:include>		
+		<jsp:include page="inc/header.jsp">
+			<jsp:param value="" name="context"></jsp:param>
+		</jsp:include>		
 		<section id="main">
 			<p>업무 내용</p>
 		</section>

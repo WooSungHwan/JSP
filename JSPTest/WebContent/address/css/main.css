@@ -2,9 +2,12 @@
 @import url(//fonts.googleapis.com/earlyaccess/nanumbrushscript.css); .nanumbrushscript * { font-family: 'Nanum Brush Script', cursive; }
 
 @font-face { font-family: 'EBSHMJESaeronRA'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/EBSHMJESaeronRA.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'yg-jalnan'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans:400" rel="stylesheet"> @import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400') font-family: 'Black Han Sans', sans-serif;
 
 html,body,p,div,span,table,th,td,ul,ol,dl,li,dt,dd,input,textarea,select,option,fieldset,legend,h1,h2,h3,h4,h5,h6,a{
-	font-family: EBSHMJESaeronRA;
+	font-family: 'Black Han Sans'
 }
 
 a:hover{

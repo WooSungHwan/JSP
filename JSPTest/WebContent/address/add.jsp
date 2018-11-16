@@ -36,7 +36,7 @@
 		width: 600px;
 		margin: 0px auto;
 		margin-top: 20px;
-		text-align:right;
+		
 	}
 
 </style>
