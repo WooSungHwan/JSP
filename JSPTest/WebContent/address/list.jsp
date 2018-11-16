@@ -60,7 +60,7 @@
 <script>
 	
 	$(document).ready(function() {
-	
+		
 	});
 	
 	function edit(seq) {

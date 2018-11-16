@@ -47,7 +47,7 @@
     	//증명 문서들 가져오기(1개이상)
     	Enumeration e = multi.getFileNames();
     	while(e.hasMoreElements()){
-    		//System.out.println(e.nextElement()); //input type="file"의 name 값
+    		System.out.println(e.nextElement()); //input type="file"의 name 값
     		String temp = e.nextElement().toString();
     		
     		//증명사진 빼기

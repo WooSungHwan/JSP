@@ -17,7 +17,7 @@
 //본론
 
 String path = application.getRealPath("./example/files"); // 웹에서 쓰던 상대주소를 적으면 절대주소(로컬: C:\\같은)로 바꿔준다.
-//System.out.println(path);
+System.out.println(path);
 
 //업로드 파일의 최대 크기 지정
 // - 단위 : 바이트

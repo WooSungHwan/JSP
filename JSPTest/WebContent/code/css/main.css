@@ -1,0 +1,35 @@
+
+*{outline:none;}
+html,body{
+	height:100%;
+}
+
+html,body,p,div,span,table,th,td,a,input,textarea,select,option,h1,h2,h3,h4,h5,h6,pre{
+	
+	/* 
+	font-family:
+	color:
+	font-size:
+	*/
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+#main{
+	width:800px;
+	margin:0px auto;
+	border-left:1px solid #A9A9A9;
+	border-right:1px solid #A9A9A9;
+	min-height:100%;
+	box-shadow:0px 0px 2px #AAA;
+}
+
+#main > header{
+	border-bottom:1px solid #A9A9A9;
+	height:80px;
+}
+
+#main > section{
+}
