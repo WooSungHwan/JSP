@@ -29,7 +29,44 @@ a:hover{
 #main > header{
 	border-bottom:1px solid #A9A9A9;
 	height:80px;
+	position:relative;
+	left:0px;
+	top:0px;
+}
+#main > header > #info{
+	border:1px solid #A9A9A9;
+	width:150px;
+	height:200px;
+	position:absolute;
+	left:-150px;
+	top:140px;
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+}
+
+#main > header > #info > h3{
+	border-bottom:1px dashed #A9A9A9;
+	padding:15px;
+	margin:0px;
+	margin-bottom:13px;
+}
+
+
+#main > header > nav > ul{
+	margin:0px;
+	padding:0px;
+}
+#main > header > nav > ul > li{
+	float:left;
+	list-style-type: none;
+	width:20%;
+	text-align:center;
+	padding-top:20px;
+	font-size:2em;
+	font-variant:small-caps;
+	cursor:pointer;
 }
 
 #main > section{
+	padding:20px;
 }

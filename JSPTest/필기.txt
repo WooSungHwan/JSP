@@ -460,5 +460,31 @@ address 폴더 구조
 	- code > add.jsp
 	- code > addok.jsp
 	- code > template.jsp
+	- code > member.jsp
+	- code > login.jsp
+	- code > logout.jsp
+	- code > edit.jsp
+	- code > editok.jsp
+	- code > del.jsp
+	- code > delok.jsp
+	
+	
+4. 회원 정책
+	a. 인증 사용자
+		- 글쓰기 가능
+		- 글 목록 & 상세 보기 가능
+		- 수정 & 삭제 : 작성자(+관리자) 본인만 가능
+		
+	b. 미인증 사용자
+		- 글쓰기 불가능
+		- 글 목록 가능
+		- but 상세 보기 불가능
+		
+------------------------------------------------------------------------------------------------------------------
+MVC 디자인 패턴(JSP Model 2) + EL(Expression Language)
 
+
+		
+		
+	
 	

@@ -25,29 +25,33 @@
 	String subject = multi.getParameter("subject");
 	String category = multi.getParameter("category");
 	String content = multi.getParameter("content");
-	String filename = multi.getFilesystemName("attach"); //첨부파일명(물리저장)
+	String seq = multi.getParameter("seq");
 	
+	//첨부파일을 수정했다면... 파일명 존재, 수정 안했다면.. 비어있다?
+	String filename = multi.getFilesystemName("attach"); //첨부파일명(물리저장)
 	
 	System.out.println(subject);
 	System.out.println(content);
 	System.out.println(category);
-	System.out.println(filename);
+	//System.out.println(filename==null);
+	//System.out.println(filename=="");
+	
 	
 	CodeDAO dao = new CodeDAO();
 	CodeDTO dto = new CodeDTO();
 	dto.setCategory(category);
 	dto.setSubject(subject);
 	dto.setContent(content);
-	dto.setFilename(filename);
-	dto.setId(session.getAttribute("id").toString());
+	dto.setFilename(filename); // 수정하면 새파일 , 안하면 null이 들어있을 것임
+	dto.setSeq(seq);
+	//dto.setId(session.getAttribute("id").toString()); 수정이라 증가횟수 제외
 	
-	int result = dao.add(dto);
+	int result = dao.edit(dto);//글 수정
 	
-	//자기가 쓴 글의 갯수 더하기!
-	if(result==1){
-		//cnt=cnt+1;
-		session.setAttribute("cnt", Integer.parseInt(session.getAttribute("cnt").toString())+1);
+	if(!session.getAttribute("id").toString().equals(dto.getId())){
+		response.sendRedirect("list.jsp");
 	}
+	
 	
 %>
     
@@ -64,17 +68,17 @@
 	$(document).ready(function(){
 		
 		<%if(result==1){   %>
-		alert("등록 성공");
+		alert("수정 성공");
 		location.href="<%=application.getContextPath()%>/code/list.jsp";
 		<% }else{  %>
-		alert("등록 실패");
+		alert("수정 실패");
 		history.back();
 		<% }  %>
 	});
 </script>
 </head>
 <body>
-	<!-- template.jsp -->
+	<!-- edit.jsp -->
 	<div id ="main">
 		<jsp:include page="inc/header.jsp"></jsp:include>
 			

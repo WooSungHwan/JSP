@@ -71,7 +71,18 @@ create table tblCode(
     constraint tblCode_category_FK foreign key(category) references tblCategory(seq)
 );
 
+select * from tblCode;
+select seq,subject,(select name from tblMember where id = c.id) as name,regdate,(select name from tblCategory where seq = c.category) as categoryName from tblCode c order by seq desc;
 create sequence code_seq;
+
+select c.*,
+    (select name from tblMember where id = c.id) as name, 
+        (select name from tblCategory where seq = c.category) as categoryName 
+            from tblCode c where seq = ?
+commit;
+select m.*,(select count(*) from tblCode where id = m.id) as cnt from tblMember m;
+select m.*,(select count(*) from tblCode where id = m.id) as cnt from tblMember m;
+delete from tblCode where seq = 8;
 
 --회원 정보
 insert into tblMember values('hong','1111','홍길동',1);

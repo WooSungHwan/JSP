@@ -26,7 +26,13 @@
 		<jsp:include page="inc/header.jsp"></jsp:include>
 			
 		<section>
-			<h1 class="page-header">Title</h1>
+			<h1 class="page-header">Code</h1>
+			<p>게시물을 삭제하겠습니까?</p>
+			<div>
+				<input type="button" value="돌아가기" required class="btn btn-default" onclick="history.back();" />
+				<input type="button" value='삭제하기' required class="btn btn-primary" onclick="location.href='delok.jsp?seq=<%=request.getParameter("seq") %>'" />
+			</div>
+			
 		</section>
 	</div>
 </body>

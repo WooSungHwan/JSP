@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-
-
+	//logout.jsp
+	session.removeAttribute("id");
 %>
     
 <!DOCTYPE html>
@@ -16,7 +16,8 @@
 </style>
 <script>
 	$(document).ready(function(){
-
+		alert("로그아웃 성공!!");
+		location.href="<%=application.getContextPath()%>/code/member.jsp";
 	});
 </script>
 </head>
@@ -26,7 +27,7 @@
 		<jsp:include page="inc/header.jsp"></jsp:include>
 			
 		<section>
-			<h1 class="page-header">Title</h1>
+			<h1 class="page-header">Member</h1>
 		</section>
 	</div>
 </body>
