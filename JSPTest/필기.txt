@@ -483,8 +483,98 @@ address 폴더 구조
 ------------------------------------------------------------------------------------------------------------------
 MVC 디자인 패턴(JSP Model 2) + EL(Expression Language)
 
+새 패키지 생성
 
-		
-		
+1. Servlet 
+	- *.java
+	- 자바코드 쉽다. + HTML 불편
+
+2. JSP
+	- *.jsp(html)
+	- 자바코드 어렵다 + HTML 쉽다.
+
+3. Servlet + JSP
+	- *.java + *.jsp
+	- Servlet(자바코드) + JSP(HTML코드)
+	
+MVC 방명록
+- CRUD
+- MVC(Controller, View, Model) : ********************************************중요중요중요
+
+1. 패키지 생성
+	- com.test.guest
+
+2. 폴더 생성
+	- WebContent > guest
+	
+3. 기존 폴더 복사
+	- WebContent > guest > asset 폴더 복사 붙여넣기
+	- WebContent > guest > images 폴더 복사 붙여넣기
+
+4. MVC 맛보기
+	a. 순수 서블릿 : Hello.java -> 임시 페이지 생성
+	b. 순수 JSP : hello.jsp -> 임시 페이지 생성
+	c. 서블릿 + JSP : Hello.java + Hello.jsp -> 임시페이지 1장
+		- com.test.guest > Hello.java : 업무 코드(자바 사용)
+		- WebContent > guest > hello.jsp : 출력 코드( HTML...JSP)
+	
+5. EL
+	a. com.test.guest > EL.java
+	b. WebContent> guest > el.jsp
+		- 자바의 표현식 <%%> 대체재
+		- HTML 문서 일부에 원하는 값을 출력하는 용도
+		- ${내장객체의 키}
+		- 내장객체 : pageContext, request session, application, -> setAttribute, getAttribute
+
+6. JSTL
+	a. com.test.quest > JSTL.java
+	b. WebContent > guest > jstl.jsp
+	
+	
+------------------------------------------------------------------------------------------------------------------
+
+방명록
+
+기능
+1. 목록보기
+	- List.java
+	- list.jsp
+2. 글쓰기
+	- Add.java
+	- add.jsp
+	- AddOk.java
+	- addok.jsp
+3. 수정
+	- Edit.java
+	- edit.jsp
+	- EditOk.java
+	- editok.jsp
+4. 삭제
+	- Del.java
+	- del.jsp
+	- DelOk.java
+	- delok.jsp
+5. 기타
+	- GuestDAO.java
+	- GuestDTO.java
+	- DBUtil.java(복사)
+	- inc > header.jsp
+	- asset > main.css
+
+A. 요구분석(업무)
+	- 글쓴이 정보 포함(글에 대한 비번)
+	
+B. 데이터 베이스
+	- tblGuest
+
+C. 탬플릿
+	- 조각 페이지 + 공통 레이아웃
+	
+	
+	
+	
+	
+	
+	
 	
 	
